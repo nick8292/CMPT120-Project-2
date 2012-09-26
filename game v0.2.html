@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+	<html>
+		<!-- Nicholas Pomponio
+		Project 2 - Game v0.2
+		September 26, 2012		-->
+  <head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta name="author" content="Nicholas Pomponio" class="italic"  /> 
+		<title>Introduction to Programming="bolder"</title>
+    <style>
+		body  {background-color:yellow; }
+		
+    </style>
+  </head>
+  <body>
+  <h1> Nick Pomponio </h1> 
+	<h2> Game Title </h2>
+		<textarea id="Gametext" name="Gametext" cols="37" rows ="10" >starting point
+		</textarea>
+		<br>
+		<input type="button"
+					id="northButton"
+					name="northButton"
+					value="North"
+					onclick="displayNorth();"
+					>
+		<input type="button"
+					id="southButton"
+					name="southButton"
+					value="South"
+					onclick="displaySouth();"
+					>			
+		<input type="button"
+					id="eastButton"
+					name="eastButton"
+					value="East"
+					onclick="displayEast();"
+					>
+		<input type="button"
+					id="westButton"
+					name="westButton"
+					value="West"
+					onclick="displayWest();"
+					>			
+					
+		<br>
+		<input type="button"
+					id="Score"
+					name="Score"
+					value="Score"
+					onclick="displayScore();"
+					>
+		<script type="text/javascript">
+		var score = 0;	var north = 0; var south = 0; var east = 0; var west = 0;
+		
+		
+		
+		function displayNorth()
+	{
+		var message = "You went north you are here";
+		alert(message);
+		if (north ===0) 
+		{
+		   addScore();
+		   north = north+1;
+		}
+		
+	}
+		
+		function displaySouth()
+	{
+	var message = "You went north you are here";
+		alert(message);
+		if (south ===0) 
+		{
+		   addScore();
+		   south = south+1;
+		}	
+	}
+		
+		function displayEast()
+	{
+		var message = "You went north you are here";
+		alert(message);
+		if (east ===0) 
+		{
+		   addScore();
+		   east = east+1;
+		}
+	}
+	
+		function displayWest()
+	{
+		var message = "You went north you are here";
+		alert(message);
+		if (west ===0) 
+		{
+		   addScore();
+		   west = west+1;
+		}
+	}
+	
+		function addScore()
+	{
+		score = score + 5;
+	}	
+	function displayScore()
+	{
+		alert(score);
+	}
+		</script>
+		
+		
+	
+	    <a href="mailto:Nicholas.pomponio1@marist.edu"> Email Me</a>
+       </body>
+	</html>
