@@ -1,0 +1,370 @@
+<!DOCTYPE HTML>
+	<html>
+		<!-- Nicholas Pomponio
+		Project 3 - Game v0.4
+		October 25, 2012		-->
+  <head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta name="author" content="Nicholas Pomponio" class="italic"  /> 
+		<title>Introduction to Programming="bolder"</title>
+    <style>
+		body  {background-color:yellow; }
+		
+		
+    </style>
+  </head>
+  <body>
+  <h1> Nick Pomponio </h1> 
+	<h2> Crime Catcher </h2>
+		<textarea id="Gametext" name="Gametext" cols="37" rows ="10" >You are a police officer in the middle of New York City.  You work night hours so this is when the most robberies and crimes occur.  Your objective is to catch as many robbers and criminals as possible throughout the night.  You are currently at your precinct awaiting to catch criminals throughout the night.
+		</textarea>
+		<br>
+		<input type="text"
+			id="txtCommand"
+			size="40"
+			value=""
+			>
+			<input type= "button"
+				id="btnGo"
+				name="btnGo"
+				value="Go"
+				onclick="process()";
+				>
+		<br>
+			
+		<input type="button"
+					id="northButton"
+					name="northButton"
+					value="North"
+					onclick="displayNorth();"
+					>
+		<input type="button"
+					id="southButton"
+					name="southButton"
+					value="South"
+					onclick="displaySouth();"
+					>			
+		<input type="button"
+					id="eastButton"
+					name="eastButton"
+					value="East"
+					onclick="displayEast();"
+					>
+		<input type="button"
+					id="westButton"
+					name="westButton"
+					value="West"
+					onclick="displayWest();"
+					>			
+					
+		<br>
+		<input type="button"
+					id="Score"
+					name="Score"
+					value="Score"
+					onclick="displayScore();"
+					>
+		<script type="text/javascript"> 
+var space="\n------------------\n";
+var score = 0;	var local1 = 0; var local2 = 0; var local3 = 0; var local4 = 0; var local5 = 0;
+var position=0;
+
+
+function process()
+{
+	var command="";
+	command=document.getElementById("txtCommand").value;
+	command= command.toLowerCase();
+switch(command)
+	{
+		case "n" : displayNorth();
+					break;
+		case "s" : displaySouth();
+					break;
+		case "e" : displayEast();
+					break;
+		case "w" : displayWest();
+					break;
+		default: Error();
+}}
+		
+		function displayNorth()
+	{
+	if (position===0) {
+		position=2;
+		location2();
+		
+	}	
+	else if (position===2) {
+		position=5;
+		location5();
+	}
+		else if (position===5) {
+		position=5;
+		boundry();
+	}
+		else if (position===1) {
+		position=0;
+		location0();
+	}
+		else if (position===3) {
+		position=3;
+		boundry();
+	}
+		else if (position===4) {
+		position=4;
+		boundry();
+	}
+	}
+	
+		
+		function displaySouth()
+	{
+     	if (position===0) {
+		position=1;
+		location1();
+		
+		
+	}	
+	else if (position===1) {
+		position=1;
+		boundry();
+	}
+		else if (position===2) {
+		position=0;
+		location0();
+	}
+		else if (position===3) {
+		position=3;
+		boundry();
+	}
+		else if (position===4) {
+		position=4;
+		boundry();
+	}
+		else if (position===5) {
+		position=2;
+		location2();
+	}
+	
+	}
+		
+		function displayEast()
+	{
+		if (position===0) {
+		position=3;
+		location3();
+		}
+		else if (position===1) {
+		position=1;
+		boundry();
+		
+		}
+		else if (position===2) {
+		position=2;
+		boundry();
+		}
+		else if (position===5) {
+		position=5;
+		boundry();
+		}
+		else if (position===4) {
+		position=0;
+		location0();
+		}
+		else if (position===3) {
+		position=3;
+		boundry();
+		}
+	}
+	
+		function displayWest()
+	{
+		if (position===0) {
+		position=4;
+		location4();
+		}
+		else if (position===1) {
+		position=1;
+		boundry();
+		}
+		else if (position===2) {
+		position=2;
+		boundry();
+		
+		}
+		else if (position===3) {
+		position=0;
+		location0();
+		}
+		else if (position===4) {
+		position=4;
+		boundry();
+		}
+		else if (position===5) {
+		position=5;
+		boundry();
+		
+		}		
+
+	}
+	
+		function addScore()
+	{
+		score = score + 5;
+
+	}	
+	function displayScore()
+	{
+	var message = score;
+		updateDisplay(message);
+	}
+function location0()
+	{
+		var message = "You are back at the precinct";
+		updateDisplay(message);
+		
+		   enableSouth();
+		   enableEast();
+		   enableWest();
+		   enableNorth();
+		
+	}
+function location1()
+	{
+		if (local1 ===0) 
+		{
+		   addScore();
+		   local1 = local1+1;
+
+		}
+	var message = "You have arrived at the south side of New York City.  You have caught a person jaywaking at 3:30 AM.";
+		updateDisplay(message);
+		
+	 	    disableSouth();
+		   disableEast();
+		   disableWest();
+		   enableNorth();
+		
+	}
+function location2()
+	{
+		if (local2 ===0) 
+		{
+		   addScore();
+		   local2 = local2+1;
+		}
+		var message = "You have arrived at the north side of New York City.  You have caught a robber at a local deli.";
+		updateDisplay(message);
+		
+			enableSouth();
+		   disableEast();
+		   disableWest();
+		   enableNorth();
+	}
+function location3()
+	{
+		if (local3 ===0) 
+		{
+		   addScore();
+		   local3 = local3+1;
+		}
+		var message = "You have arrived at the east side of New York City.  You have pulled over a twenty-two year old male and found 100 dollars worth of marijuana in his trunk.";
+		updateDisplay(message);
+			disableSouth();
+		   disableEast();
+		   enableWest();
+		   disableNorth();
+	}
+function location4()
+	{
+		if (local4 ===0) 
+		{
+		   addScore();
+		   local4 = local4+1;
+		}	
+		var message = "You have arrived at the west side of New York City.  You have caught a theif stealing a purse from an elderly woman.";
+		updateDisplay(message);
+			disableSouth();
+		   enableEast();
+		   disableWest();
+		   disableNorth();
+	}
+function location5()
+	{
+		if (local5 ===0) 
+		{
+		   addScore();
+		   local5 = local5+1;
+		}
+		var message = "You are";
+		updateDisplay(message);
+			enableSouth();
+		   disableEast();
+		   disableWest();
+		   disableNorth();
+	}
+function Error()
+{
+		var message = "That is not a valid command.  Valid commands a n,s,e,w.";
+				updateDisplay (message);
+}
+
+function boundry()
+{
+		var message = "Can't go this way";
+				updateDisplay (message);
+}
+function updateDisplay(updatedText)
+{
+var TextBox=document.getElementById("Gametext");
+TextBox.value=updatedText+space+TextBox.value+space;
+}
+
+function disableNorth()
+{
+    document.getElementById("northButton").disabled = true;
+}
+
+function disableSouth()
+{
+    document.getElementById("southButton").disabled = true;
+}
+
+function disableWest()
+{
+    document.getElementById("westButton").disabled = true;
+}
+
+function disableEast()
+{
+    document.getElementById("eastButton").disabled = true;
+}
+
+function enableNorth()
+{
+    document.getElementById("northButton").disabled = false;
+}
+function enableSouth()
+{
+    document.getElementById("southButton").disabled = false;
+}
+
+function enableWest()
+{
+    document.getElementById("westButton").disabled = false;
+}
+
+function enableEast()
+{
+    document.getElementById("eastButton").disabled = false;
+}
+		
+		</script>
+		
+		
+		
+	
+	    <a href="mailto:Nicholas.pomponio1@marist.edu"> Email Me</a>
+       </body>
+	</html>
